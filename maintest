@@ -1,0 +1,26 @@
+package com.bj58.iwork.build.server.controller;
+
+
+public class test {
+
+
+    public static void init(){
+        SCFInit.initScfKeyByValue("dsfsdfsdfsdfsdf"); 
+    }
+
+    public static void main(String[] args) {
+        init();
+        String url = "tcp://quotalimitaldfsd/QuotaApiServsdfsdfsdiceImpl";
+        IQuotaApiService quotaApiService = ProxyFactory.create(IQuotaApiService.class, url);
+
+        System.out.println("======ddddd1==========="+ JsonUtil.toJSONString(quotaApiService.getDepartmentInfo("hdp_teu_dia", "A100")));
+        Result<GpuTaskInfo> result =  quotaApiService.getTaskUsage("18485", "inference-online");
+        GpuTaskInfo gpuTaskInfo = result.getData();
+        System.out.println("======ddddd2==========="+JsonUtil.toJSONString(gpuTaskInfo));
+        Result<ApiTaskResult> resultw = quotaApiService.getDepartmentTaskUsage("hdp_teu_dia", "A800", "inference-online");
+        System.out.println("======ddddd3==========="+JsonUtil.toJSONString(resultw));
+
+    }
+
+
+}
